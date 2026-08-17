@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ace of Space Hotel & Suites | Luxury Redefined</title>
+    <title>Ace of Space Hotel & Suites | Luxury Experience</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F3E5AB;
-            --gold-dark: #AA7C11;
-            --bg-dark: #0A0F1D;
-            --bg-card: rgba(18, 25, 42, 0.85);
-            --text-light: #F8FAFC;
+            --palace-gold: #D4AF37;
+            --gold-gradient: linear-gradient(135deg, #FFE57F 0%, #D4AF37 50%, #996515 100%);
+            --palace-crimson: #4A0E17;
+            --palace-dark: #0B0A0F;
+            --palace-card: #14121A;
+            --text-gold: #F3E5AB;
+            --text-light: #E2E8F0;
             --text-muted: #94A3B8;
-            --border-gold: rgba(212, 175, 55, 0.3);
+            --gold-border: rgba(212, 175, 55, 0.4);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --radius-lg: 16px;
         }
 
         *, *::before, *::after {
@@ -31,27 +32,44 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--palace-dark);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(74, 14, 23, 0.3) 0%, transparent 70%);
         }
 
-        h1, h2, h3, h4, .royal-font {
+        h1, h2, h3, h4, .palace-title {
             font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            color: var(--text-gold);
+            text-transform: uppercase;
         }
 
-        /* Glassmorphism Containers */
-        .glass-panel {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        /* Palace Gold Crest Border Styling */
+        .palace-border {
+            border: 2px solid var(--palace-gold);
+            outline: 1px solid var(--palace-gold);
+            outline-offset: 4px;
+            position: relative;
         }
 
-        /* Layout & Grid */
+        .gold-crest {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gold-crest::before, .gold-crest::after {
+            content: '';
+            height: 1px;
+            width: 60px;
+            background: var(--gold-gradient);
+        }
+
+        /* Container & Grid System */
         .container {
             width: 90%;
             max-width: 1280px;
@@ -61,26 +79,27 @@
         .row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background: rgba(10, 15, 29, 0.95);
-            border-bottom: 1px solid var(--border-gold);
-            padding: 0.6rem 0;
+        /* Top Header Bar */
+        .top-notice {
+            background: var(--palace-crimson);
+            border-bottom: 1px solid var(--gold-border);
+            padding: 0.5rem 0;
             font-size: 0.85rem;
+            color: var(--text-gold);
+            text-align: center;
         }
 
-        /* Navigation */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 15, 29, 0.9);
+            background: rgba(11, 10, 15, 0.95);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 1rem 0;
+            border-bottom: 1px solid var(--gold-border);
+            padding: 1.2rem 0;
         }
 
         .nav-container {
@@ -91,77 +110,84 @@
 
         .brand-logo {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: var(--gold-primary);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
-            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
             transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--gold-primary);
+            color: var(--palace-gold);
         }
 
-        /* Hero Section */
+        /* Action Buttons */
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.9rem 2rem;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.45);
+        }
+
+        /* Hero Banner */
         .hero {
             position: relative;
             min-height: 85vh;
-            background: linear-gradient(180deg, rgba(10, 15, 29, 0.6) 0%, var(--bg-dark) 100%),
+            background: linear-gradient(180deg, rgba(11, 10, 15, 0.7) 0%, var(--palace-dark) 100%),
                         url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
+            border-bottom: 1px solid var(--gold-border);
         }
 
-        .hero-title {
+        .hero-content h1 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
-            color: var(--gold-light);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            margin-bottom: 1rem;
+            line-height: 1.1;
         }
 
-        /* Buttons */
-        .btn-gold {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: #000;
-            font-weight: 700;
-            padding: 0.9rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
-        }
-
-        /* Reservation Floating Bar */
+        /* Booking Engine Bar */
         .booking-bar {
             margin-top: -4rem;
             position: relative;
             z-index: 100;
+            background: var(--palace-card);
             padding: 2rem;
         }
 
@@ -174,100 +200,104 @@
 
         .form-group label {
             display: block;
-            font-size: 0.8rem;
-            color: var(--gold-primary);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: var(--palace-gold);
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .form-control {
             width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-gold);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--gold-border);
             padding: 0.8rem;
-            border-radius: 8px;
             color: var(--text-light);
             outline: none;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Suite Cards */
-        .suite-card {
+        /* Video Showcase & Photo Gallery */
+        .media-section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        .video-wrapper {
+            max-width: 480px;
+            margin: 0 auto;
+            border: 1px solid var(--gold-border);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            background: #000;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-card {
+            position: relative;
             overflow: hidden;
+            border: 1px solid var(--gold-border);
+            height: 250px;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Accommodations Showcase */
+        .suite-card {
+            background: var(--palace-card);
+            border: 1px solid var(--gold-border);
+            transition: var(--transition);
         }
 
         .suite-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
         }
 
         .suite-img {
             width: 100%;
             height: 260px;
             object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .suite-card:hover .suite-img {
-            transform: scale(1.05);
+            border-bottom: 1px solid var(--gold-border);
         }
 
         .suite-body {
-            padding: 1.8rem;
+            padding: 2rem;
         }
 
         .suite-price {
-            font-size: 1.25rem;
-            color: var(--gold-primary);
-            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--palace-gold);
             margin-bottom: 1rem;
         }
 
-        /* Feature Badge List */
-        .feature-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin: 1rem 0 1.5rem;
-        }
-
-        .tag {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--border-gold);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--gold-light);
-        }
-
-        /* Accordion Style */
-        .accordion-item {
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-gold);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            padding: 1.2rem;
-            background: rgba(255,255,255,0.02);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-content {
-            padding: 1.2rem;
-            display: none;
-            background: rgba(0,0,0,0.2);
-            color: var(--text-muted);
-        }
-
-        .accordion-item.active .accordion-content {
-            display: block;
+        /* Footer Section */
+        footer {
+            background: #060508;
+            border-top: 1px solid var(--gold-border);
+            padding: 4rem 0 2rem;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -278,38 +308,47 @@
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="container d-flex justify-content-between" style="display: flex; justify-content: space-between;">
-            <span><i class="fa-solid fa-location-dot text-gold" style="color: var(--gold-primary);"></i> KM 3, Agbarha Road, Ughelli, Delta State</span>
-            <span><i class="fa-solid fa-bolt text-gold" style="color: var(--gold-primary);"></i> Guaranteed 24/7 Electricity</span>
-        </div>
+    <!-- Top Announcement Bar -->
+    <div class="top-notice">
+        <i class="fa-solid fa-hotel text-gold"></i> WELCOME TO ACE OF SPACE HOTEL & SUITES &bull; UGHELLI, DELTA STATE &bull; GUARANTEED 24/7 POWER
     </div>
 
+    <!-- Navigation Header -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="brand-logo"><i class="fa-solid fa-crown"></i> ACE OF SPACE</a>
+            <a href="#" class="brand-logo">
+                <i class="fa-solid fa-hotel" style="color: var(--palace-gold);"></i> ACE OF SPACE
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
+                <li><a href="#video-tour">Video Tour</a></li>
                 <li><a href="#suites">Suites</a></li>
-                <li><a href="#amenities">Amenities</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="https://wa.me/2349072053039" class="btn-gold"><i class="fa-brands fa-whatsapp"></i> Reserve Now</a>
+            <a href="https://wa.me/2349072053039" class="btn-gold" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Reserve Suite
+            </a>
         </div>
     </nav>
 
+    <!-- Hero Banner -->
     <section class="hero" id="home">
-        <div class="container">
-            <span class="royal-font" style="color: var(--gold-primary); letter-spacing: 3px; text-transform: uppercase;">Unmatched Grandeur</span>
-            <h1 class="hero-title">Experience Regal Luxury</h1>
-            <p style="max-width: 650px; margin: 0 auto 2rem; color: var(--text-muted);">Step into an estate built for royalty. Smart automated interiors, world-class comfort, and absolute tranquility.</p>
-            <a href="#suites" class="btn-gold"><i class="fa-solid fa-hotel"></i> Explore Accommodations</a>
+        <div class="container hero-content">
+            <div class="gold-crest">
+                <i class="fa-solid fa-star" style="color: var(--palace-gold);"></i>
+            </div>
+            <h1 class="palace-title">Hospitality & Modern Elegance</h1>
+            <p style="max-width: 700px; margin: 0 auto 2rem; color: var(--text-muted); font-family: 'Playfair Display', serif; font-size: 1.2rem;">
+                Experience automated luxury suites, fine culinary services, and absolute peace in Ughelli.
+            </p>
+            <a href="#suites" class="btn-gold"><i class="fa-solid fa-bed"></i> Explore Accommodations</a>
         </div>
     </section>
 
-    <!-- Floating Reservation Bar -->
+    <!-- Booking Engine Bar -->
     <div class="container">
-        <div class="glass-panel booking-bar">
+        <div class="booking-bar palace-border">
             <form onsubmit="handleBooking(event)">
                 <div class="booking-grid">
                     <div class="form-group">
@@ -321,14 +360,14 @@
                         <input type="date" class="form-control" id="checkout" required>
                     </div>
                     <div class="form-group">
-                        <label>Suite Preference</label>
+                        <label>Select Accommodation</label>
                         <select class="form-control" id="roomType">
                             <option value="Deluxe King Room">Deluxe King Room (₦85,000)</option>
                             <option value="Executive Suite">Executive Suite</option>
                             <option value="Presidential Suite">Presidential Suite</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn-gold" style="width: 100%; justify-content: center;">
+                    <button type="submit" class="btn-gold" style="justify-content: center; width: 100%;">
                         Check Availability
                     </button>
                 </div>
@@ -336,108 +375,113 @@
         </div>
     </div>
 
-    <!-- Suites Section -->
-    <section class="container" id="suites" style="padding: 6rem 0;">
-        <div style="text-align: center; margin-bottom: 4rem;">
-            <span class="royal-font" style="color: var(--gold-primary);">Refined Accommodations</span>
-            <h2 style="font-size: 2.5rem; color: var(--gold-light);">Our Royal Suites</h2>
-        </div>
-
-        <div class="row">
-            <!-- Room 1 -->
-            <div class="glass-panel suite-card">
-                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Deluxe Room">
-                <div class="suite-body">
-                    <div class="suite-price">₦85,000 / Night</div>
-                    <h3>Deluxe King Room</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Automated room controls, king-size orthopaedic mattress, and integrated audio systems.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Smart Lighting</span>
-                        <span class="tag">High-Speed Wi-Fi</span>
-                        <span class="tag">Climate Control</span>
-                    </div>
-                    <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="quickBook('Deluxe King Room')">Book Suite</button>
-                </div>
-            </div>
-
-            <!-- Room 2 -->
-            <div class="glass-panel suite-card">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Executive Suite">
-                <div class="suite-body">
-                    <div class="suite-price">Executive Luxury</div>
-                    <h3>Executive Suite</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Features an expanded lounge area, private workspace, and upgraded room service amenities.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Private Lounge</span>
-                        <span class="tag">Smart TV</span>
-                        <span class="tag">Keycard Access</span>
-                    </div>
-                    <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="quickBook('Executive Suite')">Book Suite</button>
-                </div>
-            </div>
-
-            <!-- Room 3 -->
-            <div class="glass-panel suite-card">
-                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Presidential Suite">
-                <div class="suite-body">
-                    <div class="suite-price">Ultra VIP</div>
-                    <h3>Presidential Suite</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Our flagship luxury offering with jacuzzi fittings, butler service, and maximum privacy.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Jacuzzi Bath</span>
-                        <span class="tag">Butler Service</span>
-                        <span class="tag">24/7 Security</span>
-                    </div>
-                    <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="quickBook('Presidential Suite')">Book Suite</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Accordion -->
-    <section class="container" id="faq" style="padding-bottom: 6rem;">
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <h2 style="color: var(--gold-light);">Frequently Asked Questions</h2>
-        </div>
-
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="glass-panel accordion-item active">
-                <div class="accordion-header" onclick="toggleFaq(this)">
-                    <span>Is 24/7 power backup guaranteed?</span>
-                    <i class="fa-solid fa-chevron-down text-gold"></i>
-                </div>
-                <div class="accordion-content">
-                    Yes. We operate commercial-grade generators alongside redundant secondary power configurations to ensure complete power uptime.
-                </div>
-            </div>
-
-            <div class="glass-panel accordion-item">
-                <div class="accordion-header" onclick="toggleFaq(this)">
-                    <span>How do I make instant inquiries?</span>
-                    <i class="fa-solid fa-chevron-down text-gold"></i>
-                </div>
-                <div class="accordion-content">
-                    Click any "Reserve Now" button to open a pre-filled direct WhatsApp connection with our front desk concierge team.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="background: rgba(5, 8, 16, 0.95); border-top: 1px solid var(--border-gold); padding: 3rem 0; text-align: center;">
+    <!-- Video Showcase Section -->
+    <section class="media-section" id="video-tour">
         <div class="container">
-            <h3 class="royal-font" style="color: var(--gold-primary); margin-bottom: 1rem;">ACE OF SPACE HOTEL</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">KM 3, Agbarha Road, Ughelli, Delta State, Nigeria</p>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">&copy; <span id="year"></span> Ace of Space Hotel & Suites. All rights reserved.</p>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="gold-crest"><i class="fa-solid fa-video" style="color: var(--palace-gold);"></i></div>
+                <h2>Video Experience</h2>
+                <p style="color: var(--text-muted); font-family: 'Playfair Display', serif;">Take an exclusive video tour inside Ace of Space Hotel & Suites.</p>
+            </div>
+
+            <!-- Embedded Local/Uploaded Video Player -->
+            <div class="video-wrapper palace-border">
+                <video controls controlsList="nodownload" poster="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80">
+                    <source src="ace_of_space_tour.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suites & Accommodations -->
+    <section class="media-section" id="suites">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="gold-crest"><i class="fa-solid fa-key" style="color: var(--palace-gold);"></i></div>
+                <h2>Accommodations</h2>
+                <p style="color: var(--text-muted); font-family: 'Playfair Display', serif;">Elegantly appointed suites equipped with automated controls and sound systems.</p>
+            </div>
+
+            <div class="row">
+                <!-- Suite 1 -->
+                <div class="suite-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Deluxe Room">
+                    <div class="suite-body">
+                        <div class="suite-price">₦85,000 / Night</div>
+                        <h3>Deluxe King Room</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Smart ambient lighting controls, orthopaedic king bed, high-speed Wi-Fi, and climate control.</p>
+                        <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="quickBook('Deluxe King Room')">Reserve via WhatsApp</button>
+                    </div>
+                </div>
+
+                <!-- Suite 2 -->
+                <div class="suite-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Executive Suite">
+                    <div class="suite-body">
+                        <div class="suite-price">Executive Luxury</div>
+                        <h3>Executive Suite</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Expanded living lounge, dedicated work desk, smart TV entertainment, and keycard security access.</p>
+                        <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="quickBook('Executive Suite')">Reserve via WhatsApp</button>
+                    </div>
+                </div>
+
+                <!-- Suite 3 -->
+                <div class="suite-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" class="suite-img" alt="Presidential Suite">
+                    <div class="suite-body">
+                        <div class="suite-price">VIP Suite</div>
+                        <h3>Presidential Suite</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">The pinnacle of comfort featuring a personal jacuzzi, dedicated concierge service, and complete privacy.</p>
+                        <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="quickBook('Presidential Suite')">Reserve via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="media-section" id="gallery">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="gold-crest"><i class="fa-solid fa-camera" style="color: var(--palace-gold);"></i></div>
+                <h2>Hotel Photo Gallery</h2>
+                <p style="color: var(--text-muted); font-family: 'Playfair Display', serif;">Snapshots of our suites, exterior architecture, and dining areas.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Hotel Exterior">
+                </div>
+                <div class="gallery-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Lounge Area">
+                </div>
+                <div class="gallery-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" alt="Luxury Room Bed">
+                </div>
+                <div class="gallery-card palace-border">
+                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Suite Bath">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <h3 class="palace-title" style="margin-bottom: 1rem;">ACE OF SPACE HOTEL & SUITES</h3>
+            <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem;">
+                KM 3, Agbarha Road, Ughelli, Delta State, Nigeria.<br>
+                Phone: +234 907 205 3039 | +234 903 503 6252
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">
+                &copy; <span id="year"></span> Ace of Space Hotel. Built with Distinction.
+            </p>
         </div>
     </footer>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
-
-        function toggleFaq(el) {
-            el.parentElement.classList.toggle('active');
-        }
 
         function handleBooking(e) {
             e.preventDefault();
@@ -445,12 +489,12 @@
             const checkout = document.getElementById('checkout').value;
             const room = document.getElementById('roomType').value;
 
-            const msg = `Hello Ace of Space Hotel,%0A%0AInquiry Details:%0A- *Suite:* ${room}%0A- *Check-in:* ${checkin}%0A- *Check-out:* ${checkout}`;
+            const msg = `Hello Ace of Space Hotel,%0A%0ARequest for Reservation:%0A• *Suite:* ${room}%0A• *Check-in:* ${checkin}%0A• *Check-out:* ${checkout}`;
             window.open(`https://wa.me/2349072053039?text=${msg}`, '_blank');
         }
 
         function quickBook(roomName) {
-            const msg = `Hello Ace of Space Hotel,%0A%0AI would like to reserve the *${roomName}*. Please confirm availability.`;
+            const msg = `Hello Ace of Space Hotel,%0A%0AI would like to make a direct reservation for the *${roomName}*. Please confirm availability.`;
             window.open(`https://wa.me/2349072053039?text=${msg}`, '_blank');
         }
     </script>
